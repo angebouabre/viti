@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        min-height: 300px;
+        min-width: 300px;
+        margin: 0px;
+        padding: 0px
+      }
+      #map-canvas {
+         border-radius: 5px;
+      }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?v=3.16&libraries=geometry&region=FR&language=fr&key=AIzaSyB8tBbvZ2FU1jgnpCCFGvKrM9GG-orrTw8">
+    </script>
+
+    <script>
+    var map;
+    var center = new google.maps.LatLng(47.7371804049478, 3.68156170472503);
+
+    function initialize() {
+      var mapOptions = {
+          zoom: 17,
+          center: center,
+          mapTypeId: google.maps.MapTypeId.SATELLITE,
+          mapTypeControl: true,
+          mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+          },
+          zoomControl: true,
+          zoomControlOptions: {
+            style: google.maps.ZoomControlStyle.SMALL
+          },
+      };
+
+      var map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+      var shape = [new google.maps.LatLng(47.737667448242995, 3.681915756314993),new google.maps.LatLng(47.7365273990105, 3.6826024018228054),new google.maps.LatLng(47.736444419769015, 3.6822966299951077),new google.maps.LatLng(47.73635422479134, 3.682087417691946),new google.maps.LatLng(47.736256814039955, 3.681760188192129),new google.maps.LatLng(47.73617744218186, 3.681390043348074),new google.maps.LatLng(47.73631814675652, 3.6812720261514187),new google.maps.LatLng(47.73688817678387, 3.6809287033975124),new google.maps.LatLng(47.737194835925756, 3.6813042126595974),new google.maps.LatLng(47.7375447859164, 3.68173873052001)];
+
+      if (typeof(shape) == 'object') { 
+      // Construct the polygon.
+        vignes_coord = new google.maps.Polygon({
+        paths: shape,
+        strokeColor: 'blue',
+        strokeOpacity: 1,
+        strokeWeight: 2,
+        fillColor: 'blue',
+        //editable: true,
+        fillOpacity: 0.35
+      });
+
+      vignes_coord.setMap(map);
+      }; 
+     
+    }
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
+  </head>
+</html>
+
+
